@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "AddClient";
+}
+
+<script src="~/Scripts/Client/Index.js"></script>
+<h3><span class="fa-stack fa-2x"><i class="fa fa-user fa-stack-1x"></i></span> Baza klientów</h3>
+<button class="btn btn-sm btn-info navbar-btn" data-toggle="modal" data-target="#addClient">Dodaj klienta</button>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="text-align:center">Imię</th>
+            <th style="text-align:center">Nazwisko</th>
+            <th style="text-align:center">Numer kontatkowy</th>
+            <th style="text-align:center">Miasto</th>
+            <th style="text-align:center">Kod pocztowy</th>
+            <th style="text-align:center">Ulica</th>
+            <th style="text-align:center">Nr. mieszkania</th>
+            <th style="text-align:center">Nazwa firmy</th>
+            <th style="text-align:center">Nip</th>
+        </tr>
+    </thead>
+    <tbody style="text-align:center" data-bind="foreach: clientList">
+        <tr>
+            <td data-bind="text: Name"></td>
+            <td data-bind="text: Surname"></td>
+            <td data-bind="text: PhoneNumber"></td>
+            <td data-bind="text: City"></td>
+            <td data-bind="text: PostalCodeNumber"></td>
+            <td data-bind="text: StreetName"></td>
+            <td data-bind="text: HouseNumber"></td>
+            <td data-bind="text: CompanyName"></td>
+            <td data-bind="text: NIP"></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<div id="addClient" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Dodanie klienta do bazy</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label>Imię</label>
+                            <input class="form-control" id="name" name="name" placeholder="Podaj imię" />
+                        </div>
+                        <div class="form-group">
+                            <label>Nazwisko</label>
+                            <input class="form-control" id="surname" name="surname" placeholder="Podaj nazwisko" />
+                        </div>
+                        <div class="form-group">
+                            <label>Numer telefonu</label>
+                            <input class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Podaj nr. telefonu" />
+                        </div>
+                        <div class="form-group">
+                            <label>Nazwa firmy</label>
+                            <input class="form-control" id="companyName" name="companyName" placeholder="Podaj nazwę firmy" />
+                        </div>
+                        <div class="form-group">
+                            <label>Nip</label>
+                            <input class="form-control" id="nip" name="nip" placeholder="Podaj nip firmy" />
+                        </div>
+                        <div class="form-group">
+                            <label>Płeć</label>
+                            <select id="sex" name="sex" class="form-control"
+                                    data-bind="options: sexsList, optionsCaption: 'Wybierz płeć'"></select>
+                        </div>                                             
+                    </div>
+                    <div class="col-md-6">       
+                        <div class="form-group">
+                            <label>Miasto</label>
+                            <input class="form-control" id="city" name="city" placeholder="Podaj miasto" />
+                        </div>
+                        <div class="form-group">
+                            <label>Kod pocztowy</label>
+                            <input class="form-control" id="postalCode" name="postalCode" placeholder="Podaj kod pocztowy" />
+                        </div>                 
+                        <div class="form-group">
+                            <label>Ulica</label>
+                            <input class="form-control" id="street" name="street" placeholder="Podaj ulicę" />
+                        </div>
+                        <div class="form-group">
+                            <label>Numer budynku</label>
+                            <input class="form-control" id="houseNumber" name="houseNumber" placeholder="Podaj numer budynku" />
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input class="form-control" id="email" name="email" placeholder="Podaj email" />
+                        </div>
+                        <div class="form-group">
+                            <label>Hasło</label>
+                            <input class="form-control" id="password" name="password" placeholder="Podaj hasło" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-info navbar-btn" data-bind="click: AddClient">Zapisz</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/Scripts/Client/Index.js"></script>
+    <script>
+
+        var m = new Models();
+        ko.applyBindings(m);
+        m.ClientList();
+
+    </script>
+}

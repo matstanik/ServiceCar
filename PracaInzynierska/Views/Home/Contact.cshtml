@@ -1,0 +1,62 @@
+﻿@model PracaInzynierska.Models.Entities.User
+
+@{
+    ViewBag.Title = "Contact";
+}
+<script src="~/Scripts/scripts.js"></script>
+<h2 style="text-align:center">Dane kontaktowe</h2>
+
+
+<div class="row">
+    <div class="col-lg-offset-2 col-md-5 animated fadeIn">
+        <h3>Wyślij do nas wiadomość</h3>            
+        <div class="control-group form-group">
+                <label>Twój email:</label>
+                <input type="text" class="form-control" id="email" />
+        </div>
+        <div class="control-group form-group">        
+                <label>Tytuł:</label>
+                <input type="text" class="form-control" id="title" />                
+        </div>
+        <div class="control-group form-group">
+                <label>Wiadomość:</label>
+                <textarea class="form-control" rows="9" cols="100" id="message"> </textarea>
+        </div>
+        <div class="control-group form-group">
+            <button type="submit" style="position:fixed" class="btn btn-info" data-bind="click: SendMessage">Send </button>
+        </div>
+    </div>
+    <div class="col-md-5 animated fadeIn">
+        <h3>Dane Kontaktowe</h3>
+        <p>
+            42-512 Psary <br />
+            ul. Kamienna 1d <br />
+        </p>
+        <p>
+            <i class="fa fa-phone"></i>
+            <abbr title="Telefon kontaktowy">T</abbr>
+            :503 144 950                
+        </p>
+        <p>
+            <i class="fa fa-envelope-o"></i>
+            <abbr title="Email">E</abbr>
+            :503 144 950
+        </p>
+        <p>
+            <i class="fa fa-clock-o"></i>
+            <abbr title="Godziny otwarcia">H</abbr>
+            : Poniedziałek - Piątek: 8:00 do 17<br>Sobota: 8:00 do 14</p>
+        <p>
+            Lokalizacja:
+        </p>
+        <iframe style="border:0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5088.729682692669!2d19.098066!3d50.378396999999914!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4716d6e94791a7db%3A0xcee87d4787f08a2!2sKamienna+1C!5e0!3m2!1spl!2s!4v1396438816502"></iframe>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/Home/Message.js"></script>
+    <script>
+        var m = new Message();
+        ko.applyBindings(m);
+    </script>
+}

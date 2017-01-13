@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c59780ef11d14fcf83ed52e285e89402" Name="Diagram1" ZoomLevel="34">
+        <EntityTypeShape EntityType="PracaInzynierskaModel.TB_CarRequests" Width="1.5" PointX="5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracaInzynierskaModel.TB_Clients" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracaInzynierskaModel.TB_ClientsCars" Width="1.5" PointX="5.875" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracaInzynierskaModel.TB_ClientsInfo" Width="1.5" PointX="1.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracaInzynierskaModel.TB_Logins" Width="1.5" PointX="2.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracaInzynierskaModel.TB_Messages" Width="1.5" PointX="5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracaInzynierskaModel.TB_RepairOrders" Width="1.5" PointX="8" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracaInzynierskaModel.TB_Roles" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracaInzynierskaModel.TB_SalaryReport" Width="1.5" PointX="5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracaInzynierskaModel.TB_ServicesCars" Width="1.5" PointX="7.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracaInzynierskaModel.TB_Users" Width="1.5" PointX="0.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracaInzynierskaModel.TB_Workers" Width="1.5" PointX="2.75" PointY="9.125" IsExpanded="true" />
+        <AssociationConnector Association="PracaInzynierskaModel.FK_dbo_TB_CarRequests_dbo_TB_Clients_ClientId" ManuallyRouted="false" />
+        <AssociationConnector Association="PracaInzynierskaModel.FK_dbo_TB_ServicesCars_dbo_TB_CarRequests_ServicesCarId" ManuallyRouted="false" />
+        <AssociationConnector Association="PracaInzynierskaModel.FK_dbo_TB_Clients_dbo_TB_Users_ClientId" ManuallyRouted="false" />
+        <AssociationConnector Association="PracaInzynierskaModel.FK_dbo_TB_Messages_dbo_TB_Clients_ClientId" ManuallyRouted="false" />
+        <AssociationConnector Association="PracaInzynierskaModel.FK_dbo_TB_RepairOrders_dbo_TB_Clients_ClientId" ManuallyRouted="false" />
+        <AssociationConnector Association="PracaInzynierskaModel.FK_dbo_TB_ClientsCars_dbo_TB_ClientsInfo_ClientInfoId" ManuallyRouted="false" />
+        <AssociationConnector Association="PracaInzynierskaModel.FK_dbo_TB_Logins_dbo_TB_Users_LoginId" ManuallyRouted="false" />
+        <AssociationConnector Association="PracaInzynierskaModel.FK_dbo_TB_Messages_dbo_TB_Workers_WorkerId" ManuallyRouted="false" />
+        <AssociationConnector Association="PracaInzynierskaModel.FK_dbo_TB_RepairOrders_dbo_TB_Workers_WorkerId" ManuallyRouted="false" />
+        <AssociationConnector Association="PracaInzynierskaModel.FK_dbo_TB_Roles_dbo_TB_Users_RoleId" ManuallyRouted="false" />
+        <AssociationConnector Association="PracaInzynierskaModel.FK_dbo_TB_SalaryReport_dbo_TB_Workers_WorkerId" ManuallyRouted="false" />
+        <AssociationConnector Association="PracaInzynierskaModel.FK_dbo_TB_Workers_dbo_TB_Users_WorkerId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

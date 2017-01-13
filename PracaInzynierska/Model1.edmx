@@ -1,0 +1,886 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PracaInzynierskaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TB_CarRequests">
+          <Key>
+            <PropertyRef Name="CarRequestId" />
+          </Key>
+          <Property Name="CarRequestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_Clients">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="StreetName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HouseNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NIP" Type="nvarchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="TB_ClientsCars">
+          <Key>
+            <PropertyRef Name="ClientCarId" />
+          </Key>
+          <Property Name="ClientCarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Surname" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="PostalCode" Type="nvarchar(max)" />
+          <Property Name="StreetName" Type="nvarchar(max)" />
+          <Property Name="HomeNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="Company" Type="nvarchar(max)" />
+          <Property Name="ClientInfoId" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_ClientsInfo">
+          <Key>
+            <PropertyRef Name="ClientInfoId" />
+          </Key>
+          <Property Name="ClientInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Brand" Type="nvarchar(max)" />
+          <Property Name="Model" Type="nvarchar(max)" />
+          <Property Name="ProductionYear" Type="datetime" Nullable="false" />
+          <Property Name="Capacity" Type="float" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" />
+          <Property Name="EngineType" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TB_Logins">
+          <Key>
+            <PropertyRef Name="LoginId" />
+          </Key>
+          <Property Name="LoginId" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_Messages">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="WorkerId" Type="int" />
+          <Property Name="MessageContent" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TB_RepairOrders">
+          <Key>
+            <PropertyRef Name="RepairOrderId" />
+          </Key>
+          <Property Name="RepairOrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CarType" Type="nvarchar(max)" />
+          <Property Name="CarModel" Type="nvarchar(max)" />
+          <Property Name="CarBrand" Type="nvarchar(max)" />
+          <Property Name="CarEngine" Type="nvarchar(max)" />
+          <Property Name="CarYearBorn" Type="datetime" Nullable="false" />
+          <Property Name="RepairStart" Type="datetime" Nullable="false" />
+          <Property Name="RepairEnd" Type="datetime" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="WorkerId" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_SalaryReport">
+          <Key>
+            <PropertyRef Name="SalaryReportId" />
+          </Key>
+          <Property Name="SalaryReportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountingStartTime" Type="datetime" Nullable="false" />
+          <Property Name="CountingEndTime" Type="datetime" Nullable="false" />
+          <Property Name="Salary" Type="float" Nullable="false" />
+          <Property Name="Bonus" Type="float" Nullable="false" />
+          <Property Name="WorkerId" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_ServicesCars">
+          <Key>
+            <PropertyRef Name="ServicesCarId" />
+          </Key>
+          <Property Name="ServicesCarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Model" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Brand" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Capacity" Type="float" Nullable="false" />
+          <Property Name="EngineType" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TB_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="40" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="15" />
+          <Property Name="NameRole" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TB_Workers">
+          <Key>
+            <PropertyRef Name="WorkerId" />
+          </Key>
+          <Property Name="WorkerId" Type="int" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="StreetName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HouseNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateOfEmployment" Type="datetime" />
+          <Property Name="DateOfRelease" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_dbo_TB_CarRequests_dbo_TB_Clients_ClientId">
+          <End Role="TB_Clients" Type="Self.TB_Clients" Multiplicity="0..1" />
+          <End Role="TB_CarRequests" Type="Self.TB_CarRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Clients">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="TB_CarRequests">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_Clients_dbo_TB_Users_ClientId">
+          <End Role="TB_Users" Type="Self.TB_Users" Multiplicity="1" />
+          <End Role="TB_Clients" Type="Self.TB_Clients" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="TB_Clients">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_ClientsCars_dbo_TB_ClientsInfo_ClientInfoId">
+          <End Role="TB_ClientsInfo" Type="Self.TB_ClientsInfo" Multiplicity="0..1" />
+          <End Role="TB_ClientsCars" Type="Self.TB_ClientsCars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ClientsInfo">
+              <PropertyRef Name="ClientInfoId" />
+            </Principal>
+            <Dependent Role="TB_ClientsCars">
+              <PropertyRef Name="ClientInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_Logins_dbo_TB_Users_LoginId">
+          <End Role="TB_Users" Type="Self.TB_Users" Multiplicity="1" />
+          <End Role="TB_Logins" Type="Self.TB_Logins" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="TB_Logins">
+              <PropertyRef Name="LoginId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_Messages_dbo_TB_Clients_ClientId">
+          <End Role="TB_Clients" Type="Self.TB_Clients" Multiplicity="0..1" />
+          <End Role="TB_Messages" Type="Self.TB_Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Clients">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="TB_Messages">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_Messages_dbo_TB_Workers_WorkerId">
+          <End Role="TB_Workers" Type="Self.TB_Workers" Multiplicity="0..1" />
+          <End Role="TB_Messages" Type="Self.TB_Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Workers">
+              <PropertyRef Name="WorkerId" />
+            </Principal>
+            <Dependent Role="TB_Messages">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_RepairOrders_dbo_TB_Clients_ClientId">
+          <End Role="TB_Clients" Type="Self.TB_Clients" Multiplicity="0..1" />
+          <End Role="TB_RepairOrders" Type="Self.TB_RepairOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Clients">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="TB_RepairOrders">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_RepairOrders_dbo_TB_Workers_WorkerId">
+          <End Role="TB_Workers" Type="Self.TB_Workers" Multiplicity="0..1" />
+          <End Role="TB_RepairOrders" Type="Self.TB_RepairOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Workers">
+              <PropertyRef Name="WorkerId" />
+            </Principal>
+            <Dependent Role="TB_RepairOrders">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_Roles_dbo_TB_Users_RoleId">
+          <End Role="TB_Users" Type="Self.TB_Users" Multiplicity="1" />
+          <End Role="TB_Roles" Type="Self.TB_Roles" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="TB_Roles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_SalaryReport_dbo_TB_Workers_WorkerId">
+          <End Role="TB_Workers" Type="Self.TB_Workers" Multiplicity="0..1" />
+          <End Role="TB_SalaryReport" Type="Self.TB_SalaryReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Workers">
+              <PropertyRef Name="WorkerId" />
+            </Principal>
+            <Dependent Role="TB_SalaryReport">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_ServicesCars_dbo_TB_CarRequests_ServicesCarId">
+          <End Role="TB_CarRequests" Type="Self.TB_CarRequests" Multiplicity="1" />
+          <End Role="TB_ServicesCars" Type="Self.TB_ServicesCars" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CarRequests">
+              <PropertyRef Name="CarRequestId" />
+            </Principal>
+            <Dependent Role="TB_ServicesCars">
+              <PropertyRef Name="ServicesCarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_Workers_dbo_TB_Users_WorkerId">
+          <End Role="TB_Users" Type="Self.TB_Users" Multiplicity="1" />
+          <End Role="TB_Workers" Type="Self.TB_Workers" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="TB_Workers">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PracaInzynierskaModelStoreContainer">
+          <EntitySet Name="TB_CarRequests" EntityType="Self.TB_CarRequests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Clients" EntityType="Self.TB_Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_ClientsCars" EntityType="Self.TB_ClientsCars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_ClientsInfo" EntityType="Self.TB_ClientsInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Logins" EntityType="Self.TB_Logins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Messages" EntityType="Self.TB_Messages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_RepairOrders" EntityType="Self.TB_RepairOrders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Roles" EntityType="Self.TB_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_SalaryReport" EntityType="Self.TB_SalaryReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_ServicesCars" EntityType="Self.TB_ServicesCars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Users" EntityType="Self.TB_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Workers" EntityType="Self.TB_Workers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_TB_CarRequests_dbo_TB_Clients_ClientId" Association="Self.FK_dbo_TB_CarRequests_dbo_TB_Clients_ClientId">
+            <End Role="TB_Clients" EntitySet="TB_Clients" />
+            <End Role="TB_CarRequests" EntitySet="TB_CarRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_Clients_dbo_TB_Users_ClientId" Association="Self.FK_dbo_TB_Clients_dbo_TB_Users_ClientId">
+            <End Role="TB_Users" EntitySet="TB_Users" />
+            <End Role="TB_Clients" EntitySet="TB_Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_ClientsCars_dbo_TB_ClientsInfo_ClientInfoId" Association="Self.FK_dbo_TB_ClientsCars_dbo_TB_ClientsInfo_ClientInfoId">
+            <End Role="TB_ClientsInfo" EntitySet="TB_ClientsInfo" />
+            <End Role="TB_ClientsCars" EntitySet="TB_ClientsCars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_Logins_dbo_TB_Users_LoginId" Association="Self.FK_dbo_TB_Logins_dbo_TB_Users_LoginId">
+            <End Role="TB_Users" EntitySet="TB_Users" />
+            <End Role="TB_Logins" EntitySet="TB_Logins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_Messages_dbo_TB_Clients_ClientId" Association="Self.FK_dbo_TB_Messages_dbo_TB_Clients_ClientId">
+            <End Role="TB_Clients" EntitySet="TB_Clients" />
+            <End Role="TB_Messages" EntitySet="TB_Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_Messages_dbo_TB_Workers_WorkerId" Association="Self.FK_dbo_TB_Messages_dbo_TB_Workers_WorkerId">
+            <End Role="TB_Workers" EntitySet="TB_Workers" />
+            <End Role="TB_Messages" EntitySet="TB_Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_RepairOrders_dbo_TB_Clients_ClientId" Association="Self.FK_dbo_TB_RepairOrders_dbo_TB_Clients_ClientId">
+            <End Role="TB_Clients" EntitySet="TB_Clients" />
+            <End Role="TB_RepairOrders" EntitySet="TB_RepairOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_RepairOrders_dbo_TB_Workers_WorkerId" Association="Self.FK_dbo_TB_RepairOrders_dbo_TB_Workers_WorkerId">
+            <End Role="TB_Workers" EntitySet="TB_Workers" />
+            <End Role="TB_RepairOrders" EntitySet="TB_RepairOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_Roles_dbo_TB_Users_RoleId" Association="Self.FK_dbo_TB_Roles_dbo_TB_Users_RoleId">
+            <End Role="TB_Users" EntitySet="TB_Users" />
+            <End Role="TB_Roles" EntitySet="TB_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_SalaryReport_dbo_TB_Workers_WorkerId" Association="Self.FK_dbo_TB_SalaryReport_dbo_TB_Workers_WorkerId">
+            <End Role="TB_Workers" EntitySet="TB_Workers" />
+            <End Role="TB_SalaryReport" EntitySet="TB_SalaryReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_ServicesCars_dbo_TB_CarRequests_ServicesCarId" Association="Self.FK_dbo_TB_ServicesCars_dbo_TB_CarRequests_ServicesCarId">
+            <End Role="TB_CarRequests" EntitySet="TB_CarRequests" />
+            <End Role="TB_ServicesCars" EntitySet="TB_ServicesCars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_Workers_dbo_TB_Users_WorkerId" Association="Self.FK_dbo_TB_Workers_dbo_TB_Users_WorkerId">
+            <End Role="TB_Users" EntitySet="TB_Users" />
+            <End Role="TB_Workers" EntitySet="TB_Workers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PracaInzynierskaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TB_CarRequests">
+          <Key>
+            <PropertyRef Name="CarRequestId" />
+          </Key>
+          <Property Name="CarRequestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ClientId" Type="Int32" />
+          <NavigationProperty Name="TB_Clients" Relationship="Self.FK_dbo_TB_CarRequests_dbo_TB_Clients_ClientId" FromRole="TB_CarRequests" ToRole="TB_Clients" />
+          <NavigationProperty Name="TB_ServicesCars" Relationship="Self.FK_dbo_TB_ServicesCars_dbo_TB_CarRequests_ServicesCarId" FromRole="TB_CarRequests" ToRole="TB_ServicesCars" />
+        </EntityType>
+        <EntityType Name="TB_Clients">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StreetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HouseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NIP" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TB_CarRequests" Relationship="Self.FK_dbo_TB_CarRequests_dbo_TB_Clients_ClientId" FromRole="TB_Clients" ToRole="TB_CarRequests" />
+          <NavigationProperty Name="TB_Users" Relationship="Self.FK_dbo_TB_Clients_dbo_TB_Users_ClientId" FromRole="TB_Clients" ToRole="TB_Users" />
+          <NavigationProperty Name="TB_Messages" Relationship="Self.FK_dbo_TB_Messages_dbo_TB_Clients_ClientId" FromRole="TB_Clients" ToRole="TB_Messages" />
+          <NavigationProperty Name="TB_RepairOrders" Relationship="Self.FK_dbo_TB_RepairOrders_dbo_TB_Clients_ClientId" FromRole="TB_Clients" ToRole="TB_RepairOrders" />
+        </EntityType>
+        <EntityType Name="TB_ClientsCars">
+          <Key>
+            <PropertyRef Name="ClientCarId" />
+          </Key>
+          <Property Name="ClientCarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StreetName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HomeNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Company" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClientInfoId" Type="Int32" />
+          <NavigationProperty Name="TB_ClientsInfo" Relationship="Self.FK_dbo_TB_ClientsCars_dbo_TB_ClientsInfo_ClientInfoId" FromRole="TB_ClientsCars" ToRole="TB_ClientsInfo" />
+        </EntityType>
+        <EntityType Name="TB_ClientsInfo">
+          <Key>
+            <PropertyRef Name="ClientInfoId" />
+          </Key>
+          <Property Name="ClientInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Brand" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductionYear" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Capacity" Type="Double" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EngineType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TB_ClientsCars" Relationship="Self.FK_dbo_TB_ClientsCars_dbo_TB_ClientsInfo_ClientInfoId" FromRole="TB_ClientsInfo" ToRole="TB_ClientsCars" />
+        </EntityType>
+        <EntityType Name="TB_Logins">
+          <Key>
+            <PropertyRef Name="LoginId" />
+          </Key>
+          <Property Name="LoginId" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TB_Users" Relationship="Self.FK_dbo_TB_Logins_dbo_TB_Users_LoginId" FromRole="TB_Logins" ToRole="TB_Users" />
+        </EntityType>
+        <EntityType Name="TB_Messages">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="WorkerId" Type="Int32" />
+          <Property Name="MessageContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TB_Clients" Relationship="Self.FK_dbo_TB_Messages_dbo_TB_Clients_ClientId" FromRole="TB_Messages" ToRole="TB_Clients" />
+          <NavigationProperty Name="TB_Workers" Relationship="Self.FK_dbo_TB_Messages_dbo_TB_Workers_WorkerId" FromRole="TB_Messages" ToRole="TB_Workers" />
+        </EntityType>
+        <EntityType Name="TB_RepairOrders">
+          <Key>
+            <PropertyRef Name="RepairOrderId" />
+          </Key>
+          <Property Name="RepairOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CarType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CarModel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CarBrand" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CarEngine" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CarYearBorn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RepairStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RepairEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="WorkerId" Type="Int32" />
+          <NavigationProperty Name="TB_Clients" Relationship="Self.FK_dbo_TB_RepairOrders_dbo_TB_Clients_ClientId" FromRole="TB_RepairOrders" ToRole="TB_Clients" />
+          <NavigationProperty Name="TB_Workers" Relationship="Self.FK_dbo_TB_RepairOrders_dbo_TB_Workers_WorkerId" FromRole="TB_RepairOrders" ToRole="TB_Workers" />
+        </EntityType>
+        <EntityType Name="TB_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TB_Users" Relationship="Self.FK_dbo_TB_Roles_dbo_TB_Users_RoleId" FromRole="TB_Roles" ToRole="TB_Users" />
+        </EntityType>
+        <EntityType Name="TB_SalaryReport">
+          <Key>
+            <PropertyRef Name="SalaryReportId" />
+          </Key>
+          <Property Name="SalaryReportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountingStartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CountingEndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Salary" Type="Double" Nullable="false" />
+          <Property Name="Bonus" Type="Double" Nullable="false" />
+          <Property Name="WorkerId" Type="Int32" />
+          <NavigationProperty Name="TB_Workers" Relationship="Self.FK_dbo_TB_SalaryReport_dbo_TB_Workers_WorkerId" FromRole="TB_SalaryReport" ToRole="TB_Workers" />
+        </EntityType>
+        <EntityType Name="TB_ServicesCars">
+          <Key>
+            <PropertyRef Name="ServicesCarId" />
+          </Key>
+          <Property Name="ServicesCarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Brand" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Capacity" Type="Double" Nullable="false" />
+          <Property Name="EngineType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TB_CarRequests" Relationship="Self.FK_dbo_TB_ServicesCars_dbo_TB_CarRequests_ServicesCarId" FromRole="TB_ServicesCars" ToRole="TB_CarRequests" />
+        </EntityType>
+        <EntityType Name="TB_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="NameRole" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TB_Clients" Relationship="Self.FK_dbo_TB_Clients_dbo_TB_Users_ClientId" FromRole="TB_Users" ToRole="TB_Clients" />
+          <NavigationProperty Name="TB_Logins" Relationship="Self.FK_dbo_TB_Logins_dbo_TB_Users_LoginId" FromRole="TB_Users" ToRole="TB_Logins" />
+          <NavigationProperty Name="TB_Roles" Relationship="Self.FK_dbo_TB_Roles_dbo_TB_Users_RoleId" FromRole="TB_Users" ToRole="TB_Roles" />
+          <NavigationProperty Name="TB_Workers" Relationship="Self.FK_dbo_TB_Workers_dbo_TB_Users_WorkerId" FromRole="TB_Users" ToRole="TB_Workers" />
+        </EntityType>
+        <EntityType Name="TB_Workers">
+          <Key>
+            <PropertyRef Name="WorkerId" />
+          </Key>
+          <Property Name="WorkerId" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StreetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HouseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfEmployment" Type="DateTime" Precision="3" />
+          <Property Name="DateOfRelease" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TB_Messages" Relationship="Self.FK_dbo_TB_Messages_dbo_TB_Workers_WorkerId" FromRole="TB_Workers" ToRole="TB_Messages" />
+          <NavigationProperty Name="TB_RepairOrders" Relationship="Self.FK_dbo_TB_RepairOrders_dbo_TB_Workers_WorkerId" FromRole="TB_Workers" ToRole="TB_RepairOrders" />
+          <NavigationProperty Name="TB_SalaryReport" Relationship="Self.FK_dbo_TB_SalaryReport_dbo_TB_Workers_WorkerId" FromRole="TB_Workers" ToRole="TB_SalaryReport" />
+          <NavigationProperty Name="TB_Users" Relationship="Self.FK_dbo_TB_Workers_dbo_TB_Users_WorkerId" FromRole="TB_Workers" ToRole="TB_Users" />
+        </EntityType>
+        <Association Name="FK_dbo_TB_CarRequests_dbo_TB_Clients_ClientId">
+          <End Role="TB_Clients" Type="Self.TB_Clients" Multiplicity="0..1" />
+          <End Role="TB_CarRequests" Type="Self.TB_CarRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Clients">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="TB_CarRequests">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_ServicesCars_dbo_TB_CarRequests_ServicesCarId">
+          <End Role="TB_CarRequests" Type="Self.TB_CarRequests" Multiplicity="1" />
+          <End Role="TB_ServicesCars" Type="Self.TB_ServicesCars" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CarRequests">
+              <PropertyRef Name="CarRequestId" />
+            </Principal>
+            <Dependent Role="TB_ServicesCars">
+              <PropertyRef Name="ServicesCarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_Clients_dbo_TB_Users_ClientId">
+          <End Role="TB_Users" Type="Self.TB_Users" Multiplicity="1" />
+          <End Role="TB_Clients" Type="Self.TB_Clients" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="TB_Clients">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_Messages_dbo_TB_Clients_ClientId">
+          <End Role="TB_Clients" Type="Self.TB_Clients" Multiplicity="0..1" />
+          <End Role="TB_Messages" Type="Self.TB_Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Clients">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="TB_Messages">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_RepairOrders_dbo_TB_Clients_ClientId">
+          <End Role="TB_Clients" Type="Self.TB_Clients" Multiplicity="0..1" />
+          <End Role="TB_RepairOrders" Type="Self.TB_RepairOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Clients">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="TB_RepairOrders">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_ClientsCars_dbo_TB_ClientsInfo_ClientInfoId">
+          <End Role="TB_ClientsInfo" Type="Self.TB_ClientsInfo" Multiplicity="0..1" />
+          <End Role="TB_ClientsCars" Type="Self.TB_ClientsCars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ClientsInfo">
+              <PropertyRef Name="ClientInfoId" />
+            </Principal>
+            <Dependent Role="TB_ClientsCars">
+              <PropertyRef Name="ClientInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_Logins_dbo_TB_Users_LoginId">
+          <End Role="TB_Users" Type="Self.TB_Users" Multiplicity="1" />
+          <End Role="TB_Logins" Type="Self.TB_Logins" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="TB_Logins">
+              <PropertyRef Name="LoginId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_Messages_dbo_TB_Workers_WorkerId">
+          <End Role="TB_Workers" Type="Self.TB_Workers" Multiplicity="0..1" />
+          <End Role="TB_Messages" Type="Self.TB_Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Workers">
+              <PropertyRef Name="WorkerId" />
+            </Principal>
+            <Dependent Role="TB_Messages">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_RepairOrders_dbo_TB_Workers_WorkerId">
+          <End Role="TB_Workers" Type="Self.TB_Workers" Multiplicity="0..1" />
+          <End Role="TB_RepairOrders" Type="Self.TB_RepairOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Workers">
+              <PropertyRef Name="WorkerId" />
+            </Principal>
+            <Dependent Role="TB_RepairOrders">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_Roles_dbo_TB_Users_RoleId">
+          <End Role="TB_Users" Type="Self.TB_Users" Multiplicity="1" />
+          <End Role="TB_Roles" Type="Self.TB_Roles" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="TB_Roles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_SalaryReport_dbo_TB_Workers_WorkerId">
+          <End Role="TB_Workers" Type="Self.TB_Workers" Multiplicity="0..1" />
+          <End Role="TB_SalaryReport" Type="Self.TB_SalaryReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Workers">
+              <PropertyRef Name="WorkerId" />
+            </Principal>
+            <Dependent Role="TB_SalaryReport">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TB_Workers_dbo_TB_Users_WorkerId">
+          <End Role="TB_Users" Type="Self.TB_Users" Multiplicity="1" />
+          <End Role="TB_Workers" Type="Self.TB_Workers" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="TB_Workers">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PracaInzynierskaEntities8" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TB_CarRequests" EntityType="Self.TB_CarRequests" />
+          <EntitySet Name="TB_Clients" EntityType="Self.TB_Clients" />
+          <EntitySet Name="TB_ClientsCars" EntityType="Self.TB_ClientsCars" />
+          <EntitySet Name="TB_ClientsInfo" EntityType="Self.TB_ClientsInfo" />
+          <EntitySet Name="TB_Logins" EntityType="Self.TB_Logins" />
+          <EntitySet Name="TB_Messages" EntityType="Self.TB_Messages" />
+          <EntitySet Name="TB_RepairOrders" EntityType="Self.TB_RepairOrders" />
+          <EntitySet Name="TB_Roles" EntityType="Self.TB_Roles" />
+          <EntitySet Name="TB_SalaryReport" EntityType="Self.TB_SalaryReport" />
+          <EntitySet Name="TB_ServicesCars" EntityType="Self.TB_ServicesCars" />
+          <EntitySet Name="TB_Users" EntityType="Self.TB_Users" />
+          <EntitySet Name="TB_Workers" EntityType="Self.TB_Workers" />
+          <AssociationSet Name="FK_dbo_TB_CarRequests_dbo_TB_Clients_ClientId" Association="Self.FK_dbo_TB_CarRequests_dbo_TB_Clients_ClientId">
+            <End Role="TB_Clients" EntitySet="TB_Clients" />
+            <End Role="TB_CarRequests" EntitySet="TB_CarRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_ServicesCars_dbo_TB_CarRequests_ServicesCarId" Association="Self.FK_dbo_TB_ServicesCars_dbo_TB_CarRequests_ServicesCarId">
+            <End Role="TB_CarRequests" EntitySet="TB_CarRequests" />
+            <End Role="TB_ServicesCars" EntitySet="TB_ServicesCars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_Clients_dbo_TB_Users_ClientId" Association="Self.FK_dbo_TB_Clients_dbo_TB_Users_ClientId">
+            <End Role="TB_Users" EntitySet="TB_Users" />
+            <End Role="TB_Clients" EntitySet="TB_Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_Messages_dbo_TB_Clients_ClientId" Association="Self.FK_dbo_TB_Messages_dbo_TB_Clients_ClientId">
+            <End Role="TB_Clients" EntitySet="TB_Clients" />
+            <End Role="TB_Messages" EntitySet="TB_Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_RepairOrders_dbo_TB_Clients_ClientId" Association="Self.FK_dbo_TB_RepairOrders_dbo_TB_Clients_ClientId">
+            <End Role="TB_Clients" EntitySet="TB_Clients" />
+            <End Role="TB_RepairOrders" EntitySet="TB_RepairOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_ClientsCars_dbo_TB_ClientsInfo_ClientInfoId" Association="Self.FK_dbo_TB_ClientsCars_dbo_TB_ClientsInfo_ClientInfoId">
+            <End Role="TB_ClientsInfo" EntitySet="TB_ClientsInfo" />
+            <End Role="TB_ClientsCars" EntitySet="TB_ClientsCars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_Logins_dbo_TB_Users_LoginId" Association="Self.FK_dbo_TB_Logins_dbo_TB_Users_LoginId">
+            <End Role="TB_Users" EntitySet="TB_Users" />
+            <End Role="TB_Logins" EntitySet="TB_Logins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_Messages_dbo_TB_Workers_WorkerId" Association="Self.FK_dbo_TB_Messages_dbo_TB_Workers_WorkerId">
+            <End Role="TB_Workers" EntitySet="TB_Workers" />
+            <End Role="TB_Messages" EntitySet="TB_Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_RepairOrders_dbo_TB_Workers_WorkerId" Association="Self.FK_dbo_TB_RepairOrders_dbo_TB_Workers_WorkerId">
+            <End Role="TB_Workers" EntitySet="TB_Workers" />
+            <End Role="TB_RepairOrders" EntitySet="TB_RepairOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_Roles_dbo_TB_Users_RoleId" Association="Self.FK_dbo_TB_Roles_dbo_TB_Users_RoleId">
+            <End Role="TB_Users" EntitySet="TB_Users" />
+            <End Role="TB_Roles" EntitySet="TB_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_SalaryReport_dbo_TB_Workers_WorkerId" Association="Self.FK_dbo_TB_SalaryReport_dbo_TB_Workers_WorkerId">
+            <End Role="TB_Workers" EntitySet="TB_Workers" />
+            <End Role="TB_SalaryReport" EntitySet="TB_SalaryReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TB_Workers_dbo_TB_Users_WorkerId" Association="Self.FK_dbo_TB_Workers_dbo_TB_Users_WorkerId">
+            <End Role="TB_Users" EntitySet="TB_Users" />
+            <End Role="TB_Workers" EntitySet="TB_Workers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PracaInzynierskaModelStoreContainer" CdmEntityContainer="PracaInzynierskaEntities8">
+          <EntitySetMapping Name="TB_CarRequests">
+            <EntityTypeMapping TypeName="PracaInzynierskaModel.TB_CarRequests">
+              <MappingFragment StoreEntitySet="TB_CarRequests">
+                <ScalarProperty Name="CarRequestId" ColumnName="CarRequestId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Clients">
+            <EntityTypeMapping TypeName="PracaInzynierskaModel.TB_Clients">
+              <MappingFragment StoreEntitySet="TB_Clients">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+                <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+                <ScalarProperty Name="NIP" ColumnName="NIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_ClientsCars">
+            <EntityTypeMapping TypeName="PracaInzynierskaModel.TB_ClientsCars">
+              <MappingFragment StoreEntitySet="TB_ClientsCars">
+                <ScalarProperty Name="ClientCarId" ColumnName="ClientCarId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+                <ScalarProperty Name="HomeNumber" ColumnName="HomeNumber" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="ClientInfoId" ColumnName="ClientInfoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_ClientsInfo">
+            <EntityTypeMapping TypeName="PracaInzynierskaModel.TB_ClientsInfo">
+              <MappingFragment StoreEntitySet="TB_ClientsInfo">
+                <ScalarProperty Name="ClientInfoId" ColumnName="ClientInfoId" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductionYear" ColumnName="ProductionYear" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="EngineType" ColumnName="EngineType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Logins">
+            <EntityTypeMapping TypeName="PracaInzynierskaModel.TB_Logins">
+              <MappingFragment StoreEntitySet="TB_Logins">
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Messages">
+            <EntityTypeMapping TypeName="PracaInzynierskaModel.TB_Messages">
+              <MappingFragment StoreEntitySet="TB_Messages">
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+                <ScalarProperty Name="MessageContent" ColumnName="MessageContent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_RepairOrders">
+            <EntityTypeMapping TypeName="PracaInzynierskaModel.TB_RepairOrders">
+              <MappingFragment StoreEntitySet="TB_RepairOrders">
+                <ScalarProperty Name="RepairOrderId" ColumnName="RepairOrderId" />
+                <ScalarProperty Name="CarType" ColumnName="CarType" />
+                <ScalarProperty Name="CarModel" ColumnName="CarModel" />
+                <ScalarProperty Name="CarBrand" ColumnName="CarBrand" />
+                <ScalarProperty Name="CarEngine" ColumnName="CarEngine" />
+                <ScalarProperty Name="CarYearBorn" ColumnName="CarYearBorn" />
+                <ScalarProperty Name="RepairStart" ColumnName="RepairStart" />
+                <ScalarProperty Name="RepairEnd" ColumnName="RepairEnd" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Roles">
+            <EntityTypeMapping TypeName="PracaInzynierskaModel.TB_Roles">
+              <MappingFragment StoreEntitySet="TB_Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_SalaryReport">
+            <EntityTypeMapping TypeName="PracaInzynierskaModel.TB_SalaryReport">
+              <MappingFragment StoreEntitySet="TB_SalaryReport">
+                <ScalarProperty Name="SalaryReportId" ColumnName="SalaryReportId" />
+                <ScalarProperty Name="CountingStartTime" ColumnName="CountingStartTime" />
+                <ScalarProperty Name="CountingEndTime" ColumnName="CountingEndTime" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Bonus" ColumnName="Bonus" />
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_ServicesCars">
+            <EntityTypeMapping TypeName="PracaInzynierskaModel.TB_ServicesCars">
+              <MappingFragment StoreEntitySet="TB_ServicesCars">
+                <ScalarProperty Name="ServicesCarId" ColumnName="ServicesCarId" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="EngineType" ColumnName="EngineType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Users">
+            <EntityTypeMapping TypeName="PracaInzynierskaModel.TB_Users">
+              <MappingFragment StoreEntitySet="TB_Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="NameRole" ColumnName="NameRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Workers">
+            <EntityTypeMapping TypeName="PracaInzynierskaModel.TB_Workers">
+              <MappingFragment StoreEntitySet="TB_Workers">
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+                <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+                <ScalarProperty Name="DateOfEmployment" ColumnName="DateOfEmployment" />
+                <ScalarProperty Name="DateOfRelease" ColumnName="DateOfRelease" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

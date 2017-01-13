@@ -1,0 +1,41 @@
+﻿  
+@{
+    ViewBag.Title = "AboutUs";
+}
+
+       
+<div class="container">
+    <div class="row">        
+        <div class="col-sm-8 animated fadeIn">
+            @*<div class="well">*@
+            <h2>O firmie</h2>
+            <hr />
+
+            <p>
+                Warsztat jest firmą specjalizującą się w obsłudze oraz serwisowaniu samochodów wszystkich marek.
+                Prowadzimy także sprzedaż oryginalnych jak i zamiennych części i akcesoriów samochodowych.
+                Dzięki wykwalifikowanemu personelowi oraz wykorzystaniu najnowszych technologii jesteśmy
+                gotowi do realizacji każdego zlecenia serwisowego. Auto Centrum Serwis - to gwarancja wysokiej
+                jakości oraz terminowej realizacji naprawy.
+            </p>
+            <hr />
+            <h2>Referencje</h2>
+            <p>
+                Jako wieloletni klienci polecamy warsztat Auto Centrum Serwis z Psar, jakо firmę rzetelną i uczciwą..
+                - Makro Cash & Carry Polska
+            </p>
+        </div>
+        @Html.Partial("News")
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/Service/Index.js"></script>
+    <script>
+
+        var s = new Service();
+        ko.applyBindings(s);
+        s.ShowServices();
+
+    </script>
+}

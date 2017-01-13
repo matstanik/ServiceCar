@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Orders";
+}
+
+<h2></h2>
+<h3><span class="fa-stack fa-2x"><i class="fa fa-archive fa-stack-1x"></i></span> Naprawy</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="text-align:center">Marka</th>
+            <th style="text-align:center">Model</th>
+            <th style="text-align:center">Opis</th>
+            <th style="text-align:center">Status</th>
+            <th style="text-align:center">StartRepair</th>
+            <th style="text-align:center">EndOfRepair</th>
+
+        </tr>
+    </thead>
+    <tbody style="text-align:center" data-bind="foreach: clientOrders">
+        <tr>
+            <td data-bind="text: Brand"></td>
+            <td data-bind="text: Model"></td>
+            <td data-bind="text: Comments"></td>
+            <td data-bind="text: Status"></td>
+            <td data-bind="text: StartRepair"></td>
+            <td data-bind="text: EndOfRepair"></td>
+           
+        </tr>
+    </tbody>
+</table>
+
+@section Scripts{
+    <script src="~/Scripts/Client/Index.js"></script>
+    <script>
+
+        var M = new Models();
+            ko.applyBindings(M);
+            M.OrdersList();
+
+    </script>
+}

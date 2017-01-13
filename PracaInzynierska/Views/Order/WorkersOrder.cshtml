@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "WorkersOrder";
+}
+
+<h3><span class="fa-stack fa-2x"><i class="fa fa-wrench fa-stack-1x"></i></span> Twoje zlecenia</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="text-align:center">Marka</th>
+            <th style="text-align:center">Model</th>
+            <th style="text-align:center">Opis</th>
+            <th style="text-align:center">Status</th>
+            <th style="text-align:center">StartRepair</th>
+            <th style="text-align:center">EndOfRepair</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody style="text-align:center" data-bind="foreach: workersOrder">
+        <tr>
+            <td data-bind="text: Brand"></td>
+            <td data-bind="text: Model"></td>
+            <td data-bind="text: Comments"></td>
+            <td data-bind="text: Status"></td>
+            <td data-bind="text: StartRepair"></td>
+            <td data-bind="text: EndOfRepair"></td>
+            <td>
+                <button class="btn btn-sm btn-info navbar-btn" data-toggle="modal" data-target="#edit" data-bind="click: $parent.More">Zmień status</button>
+                <button class="btn btn-sm btn-info navbar-btn" data-toggle="modal" data-target="#details" data-bind="click: $parent.Details">Szczegóły</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="edit" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edycja zlecenia</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Status naprawy</label>
+                    <select id="Status" name="Status" class="form-control"
+                            data-bind="options: statusList"></select>
+                </div>                    
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-bind="click: Edit">Zatwierdź</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="details" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Szczegóły</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center">Opis naprawy</th>
+                            <th style="text-align:center">Szacunkowa kwota</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align:center" data-bind="foreach: detailsList">
+                        <tr>
+                            <td data-bind="text: Description"><span id="description"></span></td>
+                            <td data-bind="text: Price"><span  id="price"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+    @section Scripts{
+        <script src="~/Scripts/Order/Index.js"></script>
+        <script>
+
+            var om = new OrderModel();
+            ko.applyBindings(om);
+            om.OrdersList();
+
+        </script>
+    }

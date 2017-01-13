@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Salary";
+}
+<script src="~/Scripts/Worker/Index.js"></script>
+<h3><span class="fa-stack fa-2x"><i class="fa fa-money fa-stack-1x"></i></span> Moje wynagrodzenia</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="text-align:center">Wynagrodzenie</th>
+            <th style="text-align:center">Premia</th>
+            <th style="text-align:center">Początek naliczania</th>
+            <th style="text-align:center">Koniec naliczania</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody style="text-align:center" data-bind="foreach: salaryList">
+        <tr>
+            <td data-bind="text: Salary"></td>
+            <td data-bind="text: Bonus"></td>
+            <td data-bind="text: CountingStartTime"></td>
+            <td data-bind="text: CountingEndTime"></td>
+        </tr>
+    </tbody>
+</table>
+
+@section Scripts{
+    <script src="~/Scripts/Worker/Index.js"></script>
+    <script>
+        var w = new Workers();
+        ko.applyBindings(w);
+       
+        w.SalaryList();
+    </script>
+}

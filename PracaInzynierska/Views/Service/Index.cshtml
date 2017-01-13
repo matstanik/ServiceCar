@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/Service/Index.js"></script>
+
+<div class="container-fluid">
+
+    <h3><span class="fa-stack fa-2x"><i class="fa fa-car fa-stack-1x"></i></span> Lista usług</h3>
+    <button class="btn btn-sm btn-info navbar-btn" data-bind="click: VisibleAddition">Dodaj usługę</button>
+    <div class="container-fluid" data-bind="visible: addService">
+        <h2>Dodaj nową usługę </h2>
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="form-group">
+                    <label for="Brand">Nazwa usługi</label>
+                    <input class="form-control" id="Description" />
+                    <label for="Model">Cena</label>
+                    <input class="form-control" id="Price" />
+                    <button class="btn btn-sm btn-info navbar-btn" data-bind="click: CloseAddService">Anuluj</button>
+                    <button class="btn btn-sm btn-info navbar-btn" data-bind="click: AddService">Zatwierdź</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped" >
+            <thead>
+                <tr style="text-align:center">
+                    <td>Opis</td>
+                    <td>Cena</td>
+                    <td>Data dodania</td>
+                    <td>Opcje</td>
+                </tr>
+            </thead>
+            <tbody style="text-align:center" data-bind="foreach: serviceList">
+                <tr>
+                    <td data-bind="text: Description"></td>
+                    <td data-bind="text: Price"></td>
+                    <td data-bind="text: AddedDate"></td>
+                    <td style="width:200px">
+                        <button style="width:80px" class="btn btn-sm btn-info navbar-btn" data-toggle="modal" data-target="#edit" data-bind="click: $parent.LoadData">Edytuj</button>
+                        <button style="width:80px" class="btn btn-sm btn-info navbar-btn" data-bind="click: $parent.DeleteService">Usuń</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>   
+</div>
+<div id="edit" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edycja</h4>
+            </div>
+            <div class="modal-body">
+                <label for="Model">Nazwa usługi</label>
+                <input class="form-control" id="editDescription" />
+                <label for="Model">Cena</label>
+                <input class="form-control" id="editPrice" />              
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-info navbar-btn" data-bind="click: EditService">Zapisz</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+
+    <script>
+
+        var vm = new Service();
+        ko.applyBindings(vm);
+        vm.ShowServices();
+
+    </script>
+}

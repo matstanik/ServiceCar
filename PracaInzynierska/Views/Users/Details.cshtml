@@ -1,0 +1,114 @@
+﻿@model PracaInzynierska.Models.Entities.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.NIP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.NIP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Login.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostalCode.PostalCodeNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostalCode.PostalCodeNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role.RoleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role.RoleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Worker.PositionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Worker.PositionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameRole)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameRole)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StreetName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StreetName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HouseNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HouseNumber)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

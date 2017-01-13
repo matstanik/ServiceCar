@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "News";
+}
+<script src="~/Scripts/Service/Index.js"></script>
+<div class="col-sm-4 animated fadeIn">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Oferty specjalne</h3>
+        </div>
+        <div class="panel-body">
+            <p style="padding-left:15px">
+                <a href="#"><span class="glyphicon glyphicon-pushpin"></span></a>
+                &nbsp;Uwaga! Z okazji sezonu zimowego wymiana opon -20% !!!
+            </p> 
+            <p style="padding-left:15px">
+                <a href="#"><span class="glyphicon glyphicon-pushpin"></span></a>
+                &nbsp;Przy wymianie filtrów i nabijaniu klimatyzacji, mycie auta GRATIS!
+            </p> 
+        </div>
+    </div>
+</div>
+<div class="col-sm-4 animated fadeIn">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Wykonywane usługi</h3>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center">Nazwa</th>
+                            <th style="text-align:center">Przybliżona Cena</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align:center" data-bind="foreach: serviceList">
+                        <tr>
+                            <td data-bind="text: Description"></td>
+                            <td data-bind="text: Price">zł</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+<script src="~/Scripts/Service/Index.js"></script>
+    <script>
+
+        var s = new Service();
+        ko.applyBindings(s);
+        s.ShowServices();
+
+    </script>
+}

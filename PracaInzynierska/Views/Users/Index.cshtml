@@ -1,0 +1,99 @@
+﻿@model IEnumerable<PracaInzynierska.Models.Entities.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.NIP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Login.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostalCode.PostalCodeNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role.RoleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Worker.PositionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameRole)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StreetName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HouseNumber)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client.NIP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Login.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostalCode.PostalCodeNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Role.RoleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Worker.PositionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameRole)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StreetName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HouseNumber)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UserId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PracaInzynierskaModel1StoreContainer" CdmEntityContainer="PracaInzynierskaEntities1">
+    <EntitySetMapping Name="TB_CarRequests">
+      <EntityTypeMapping TypeName="PracaInzynierskaModel1.TB_CarRequests">
+        <MappingFragment StoreEntitySet="TB_CarRequests">
+          <ScalarProperty Name="CarRequestId" ColumnName="CarRequestId" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Clients">
+      <EntityTypeMapping TypeName="PracaInzynierskaModel1.TB_Clients">
+        <MappingFragment StoreEntitySet="TB_Clients">
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+          <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+          <ScalarProperty Name="NIP" ColumnName="NIP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Logins">
+      <EntityTypeMapping TypeName="PracaInzynierskaModel1.TB_Logins">
+        <MappingFragment StoreEntitySet="TB_Logins">
+          <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Messages">
+      <EntityTypeMapping TypeName="PracaInzynierskaModel1.TB_Messages">
+        <MappingFragment StoreEntitySet="TB_Messages">
+          <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_RepairOrders">
+      <EntityTypeMapping TypeName="PracaInzynierskaModel1.TB_RepairOrders">
+        <MappingFragment StoreEntitySet="TB_RepairOrders">
+          <ScalarProperty Name="RepairOrderId" ColumnName="RepairOrderId" />
+          <ScalarProperty Name="CarType" ColumnName="CarType" />
+          <ScalarProperty Name="CarModel" ColumnName="CarModel" />
+          <ScalarProperty Name="CarBrand" ColumnName="CarBrand" />
+          <ScalarProperty Name="CarEngine" ColumnName="CarEngine" />
+          <ScalarProperty Name="CarYearBorn" ColumnName="CarYearBorn" />
+          <ScalarProperty Name="RepairStart" ColumnName="RepairStart" />
+          <ScalarProperty Name="RepairEnd" ColumnName="RepairEnd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Roles">
+      <EntityTypeMapping TypeName="PracaInzynierskaModel1.TB_Roles">
+        <MappingFragment StoreEntitySet="TB_Roles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_SalaryReport">
+      <EntityTypeMapping TypeName="PracaInzynierskaModel1.TB_SalaryReport">
+        <MappingFragment StoreEntitySet="TB_SalaryReport">
+          <ScalarProperty Name="SalaryReportId" ColumnName="SalaryReportId" />
+          <ScalarProperty Name="CountingStartTime" ColumnName="CountingStartTime" />
+          <ScalarProperty Name="CountingEndTime" ColumnName="CountingEndTime" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="Bonus" ColumnName="Bonus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_ServicesCars">
+      <EntityTypeMapping TypeName="PracaInzynierskaModel1.TB_ServicesCars">
+        <MappingFragment StoreEntitySet="TB_ServicesCars">
+          <ScalarProperty Name="ServicesCarId" ColumnName="ServicesCarId" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="EngineType" ColumnName="EngineType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Users">
+      <EntityTypeMapping TypeName="PracaInzynierskaModel1.TB_Users">
+        <MappingFragment StoreEntitySet="TB_Users">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Workers">
+      <EntityTypeMapping TypeName="PracaInzynierskaModel1.TB_Workers">
+        <MappingFragment StoreEntitySet="TB_Workers">
+          <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+          <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+          <ScalarProperty Name="DateOfEmployment" ColumnName="DateOfEmployment" />
+          <ScalarProperty Name="DateOfRelease" ColumnName="DateOfRelease" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

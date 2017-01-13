@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h3><span class="fa-stack fa-2x"><i class="fa fa-wrench fa-stack-1x"></i></span> Lista napraw</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="text-align:center">Imie klienta</th>
+            <th style="text-align:center">Nazwisko klienta</th>
+            <th style="text-align:center">Początek naprawy</th>
+            <th style="text-align:center">Koniec naprawy</th>
+            <th style="text-align:center">Komentaż</th>
+            <th style="text-align:center">Status</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody style="text-align:center" data-bind="foreach: ordersList">
+        <tr>
+            <td data-bind="text: Name"></td>
+            <td data-bind="text: Surname"></td>
+            <td data-bind="text: StartRepair"></td>
+            <td data-bind="text: EndOfRepair"></td>
+            <td data-bind="text: Comments"></td>
+            <td data-bind="text: Status"></td>
+            <td>
+                <button style="width:80px" class="btn btn-sm btn-info navbar-btn" data-toggle="modal" data-target="#more" data-bind="click: $parent.More">Szczegóły</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="more" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Szczegóły</h4>
+            </div>
+            <div class="modal-body">
+                <label for="Model">Data złożenia zamówienie</label>
+                <input class="form-control" id="OrderDateRepair" />
+                <label for="Model">Data rozpoczęcia naprawy</label>
+                <input class="form-control" id="StartRepair" />
+                <label for="Model">Data zakończenia naprawy</label>
+                <input class="form-control" id="EndOfRepair" />
+                <label for="Model">Komentaż</label>
+                <input class="form-control" id="Comments" />
+                <label for="Model">Pracownik wykonujący naprawę</label>
+                <select id="Worker" name="Worker" class="form-control"
+                        data-bind="options: workersList, optionsText: 'Name', optionsValue: 'WorkerId', optionsCaption: 'Wybierz pracownila'"></select>
+                <label for="Model">Status</label>
+                <select id="Status" name="Status" class="form-control"
+                        data-bind="options: statusList, optionsCaption: 'Brak statusu', event: { change: AddStatusToOrder}"></select>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-info navbar-btn" data-bind="click: AddWorkerToOrder">Zapisz</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/Scripts/Order/Index.js"></script>
+    <script>
+
+        var om = new OrderModel();
+        ko.applyBindings(om);
+        om.List();
+
+    </script>
+}

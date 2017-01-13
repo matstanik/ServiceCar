@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "UserSalaryList";
+}
+
+<script src="~/Scripts/SalaryReport/Index.js"></script>
+
+<h2>Wynagrodzenia użytkownika </h2>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Początek rozliczenia</th>
+            <th>Koniec rozliczenia</th>
+            <th>Wynagrodzenie</th>
+            <th>Premia</th>
+            <th>Worker id</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: userSalaryList">
+        <tr>
+            <td data-bind="text: CountingStartTime"></td>
+            <td data-bind="text: CountingEndTime"></td>
+            <td data-bind="text: Salary"></td>
+            <td data-bind="text: Bonus"></td>
+            <td data-bind="text: WorkerId"></td>
+        </tr>
+    </tbody>
+</table>
+
+@*@section Scripts{
+    <script>
+        var vm = new ViewModel();
+        ko.applyBindings(vm);
+    </script>
+}*@

@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+}
+
+<div class="col-lg-12" style="padding-bottom:50px; padding-top:20px">
+    <center><h2>Twój panel </h2></center><br />
+</div>
+<div class="col-md-4 col-sm-6 animated animated fadeIn">
+    <div class="panel panel-default text-center">
+        <div class="panel-heading">
+            <span class="fa-stack fa-5x">
+                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+        <div class="panel-body">
+            <h4>Dodaj pracownika</h4>
+            <a href="@Url.Action("Create", "Worker")" class="btn btn-primary">Przejdź</a>
+        </div>
+    </div>
+</div>
+<div class="col-md-4 col-sm-6 animated animated fadeIn">
+    <div class="panel panel-default text-center">
+        <div class="panel-heading">
+            <span class="fa-stack fa-5x">
+                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+        <div class="panel-body">
+            <h4>Klienci </h4>
+            <a href="@Url.Action("AddClient", "Client")" class="btn btn-primary">Przejdź</a>
+        </div>
+    </div>
+</div>
+<div class="col-md-4 col-sm-6 animated animated fadeIn">
+    <div class="panel panel-default text-center">
+        <div class="panel-heading">
+            <span class="fa-stack fa-5x">
+                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                <i class="fa fa-money fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+        <div class="panel-body">
+            <h4>Uzupełnij wynagrodzenia</h4>
+            <a href="@Url.Action("Index", "SalaryReport")" class="btn btn-primary">Przejdź</a>
+        </div>
+    </div>
+</div>
+<div class="col-lg-offset-2 col-md-4 col-sm-6 animated animated fadeIn">
+    <div class="panel panel-default text-center">
+        <div class="panel-heading">
+            <span class="fa-stack fa-5x">
+                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                <i class="fa fa-archive fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+        <div class="panel-body">
+            <h4>Zarządzaj usługami</h4>
+            <a href="@Url.Action("Index", "Service")" class="btn btn-primary">Przejdź</a>
+        </div>
+    </div>
+</div>
+<div class="col-md-4 col-sm-6 animated animated fadeIn">
+    <div class="panel panel-default text-center">
+        <div class="panel-heading">
+            <span class="fa-stack fa-5x">
+                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                <i class="fa fa-wrench fa-stack-1x fa-inverse"></i>
+            </span>
+        </div>
+        <div class="panel-body">
+            <h4>Naprawy</h4>
+            <a href="@Url.Action("Index", "Order")" class="btn btn-primary">Przejdź</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/SalaryReport/Index.js"></script>
+
+    <div class="container-fluid" data-bind="visible: workerListVisibility">
+        <h3><span class="fa-stack fa-2x"><i class="fa fa-money fa-stack-1x"></i></span> Wynagrodzenia pracowników</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Imie</th>
+                    <th>Nazwisko</th>
+                    <th>Nr. tel</th>
+                    <th>Miasto</th>
+                    <th>Kod pocztowy</th>
+                    <th>Ulica</th>
+                    <th>Nr budynku</th>
+                    <th>Płeć</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: workerList">
+                <tr>
+                    <td data-bind="text: Name"></td>
+                    <td data-bind="text: Surname"></td>
+                    <td data-bind="text: PhoneNumber"></td>
+                    <td data-bind="text: City"></td>
+                    <td data-bind="text: PostalCodeNumber"></td>
+                    <td data-bind="text: StreetName"></td>
+                    <td data-bind="text: HouseNumber"></td>
+                    <td data-bind="text: Sex"></td>
+                    <td><button style="width:105px" class="btn btn-sm btn-info navbar-btn" data-bind="click: $parent.SalaryList">Wynagrodzenia</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container-fluid" data-bind="visible: salaryVisibility">
+        <h2>Wynagrodzenia użytkownika </h2>
+        <div class="row">
+            <div class="col-lg-10">
+                <button class="btn btn-sm btn-info navbar-btn" data-toggle="modal" data-target="#addItem">Dodaj</button>
+                <button class="btn btn-sm btn-info navbar-btn" data-bind="click: ReturnToList">Lista pracowników</button>
+               
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Wynagrodzenie</th>
+                            <th>Premia</th>
+                            <th>Początek rozliczenia</th>
+                            <th>Koniec rozliczenia</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: userSalaryList">
+                        <tr>
+                            <td data-bind="text: Salary"></td>
+                            <td data-bind="text: Bonus"></td>
+                            <td data-bind="text: CountingStartTime"></td>
+                            <td data-bind="text: CountingEndTime"></td>
+                            <td><button style="width:80px" class="btn btn-sm btn-info navbar-btn" data-bind="click: $parent.Remove">Usuń</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-2">
+                <div class="list-group">
+                    <p class="list-group-item"><b>Dane pracownika</b></p>
+                    <p class="list-group-item" data-bind="text: workerName"></p>
+                    <p class="list-group-item" data-bind="text: workerSurname"></p>
+                </div>
+                
+            </div>
+        </div>     
+
+</div>
+<div id="addItem" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Dodawanie wynagrodzenia</h4>
+            </div>
+            <div class="modal-body">                
+                <div class="form-group">
+                    <label>Początek naliczania</label>
+                    <input class="form-control" id="countingStartTime" name="countingStartTime" placeholder="początek naliczania" />
+                </div>
+                <div class="form-group">
+                    <label>Koniec naliczania</label>
+                    <input class="form-control" id="countingEndTime" name="countingEndTime" placeholder="koniec naliczania" />
+                </div>
+                <div class="form-group">
+                    <label>Wynagrodzenie</label>
+                    <input class="form-control" id="salary" name="salary" placeholder="wynagrodzenie" />
+                </div>
+                <div class="form-group">
+                    <label>Premia</label>
+                    <input class="form-control" id="bonus" name="bonus" placeholder="premia" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-bind="click: Add">Zapisz</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Anuluj</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+<script src="~/Scripts/SalaryReport/Index.js"></script>
+    <script>
+        var sm = new SalaryModel();
+        ko.applyBindings(sm);
+        sm.salaryVisibility();
+        sm.List();
+    </script>
+}
+
+
+
+

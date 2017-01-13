@@ -1,0 +1,67 @@
+﻿@model PracaInzynierska.Models.Entities.User
+@{
+    ViewBag.Title = "Services";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 animated fadeIn">
+            @*<div class="well">*@
+            <h2>Oferta</h2>
+            <hr />
+            
+            <p style="font-size:25px"><b>Nasz warsztat samochodowy wyposażony w nowoczesne urządzenia umożliwia nam realizację usług w zakresie:</b></p>
+            <p style="padding-left:15px">
+                <a href="#"><span class="glyphicon glyphicon-wrench"></span></a>
+                Napraw z zakresu elektromechaniki
+            </p>               
+            <p style="padding-left:15px">
+                <a href="#"><span class="glyphicon glyphicon-wrench"></span></a>
+                Naprawy samochodów : osobowych , dostawczych i ciężarowych( do 7t. d.m.c.)
+            </p>
+            <p style="padding-left:15px">
+                <a href="#"><span class="glyphicon glyphicon-wrench"></span></a>
+                Współpracę z klientami indywidualnymi i firmami
+            </p>
+            <p style="padding-left:15px">
+                <a href="#"><span class="glyphicon glyphicon-wrench"></span></a>
+                Przygotowanie pojazdu do okresowego badania technicznego ( przeglądu rejestracyjnego) oraz na życzenie klienta wykonanie takiego badania
+            </p>
+            <p style="padding-left:15px">
+                <a href="#"><span class="glyphicon glyphicon-wrench"></span></a>
+                Wykonanie przeglądów okresowych wszystkich marek,prowadzonych według zaleceń producenta pojazdów
+            </p>
+            <p style="padding-left:15px">
+                <a href="#"><span class="glyphicon glyphicon-wrench"></span></a>
+                Remonty kapitalne silników z zapłonem iskrowym jak i silników diesla
+            </p>
+            <p style="padding-left:15px">
+                <a href="#"><span class="glyphicon glyphicon-wrench"></span></a>
+                Remonty  kapitalne , oraz naprawy manualnych skrzyń biegów
+            </p>
+            <p style="padding-left:15px">
+                <a href="#"><span class="glyphicon glyphicon-wrench"></span></a>
+                Diagnostyka komputerowa większości marek
+            </p>
+            <p style="padding-left:15px">
+                <a href="#"><span class="glyphicon glyphicon-wrench"></span></a>
+                Dezynfekcje i czyszczenie układów klimatyzacji specjalną wytwornicą ozonu
+            </p>
+            <p style="padding-left:15px">
+                <a href="#"><span class="glyphicon glyphicon-wrench"></span></a>
+                W zakresie napraw blacharsko-lakierniczych Auto Centrum Serwis ściśle współpracuje z firmą Auto-Mal z Wojkowic,posiadajacą wieloletnie doświadczenie
+            </p>
+        </div>
+        @Html.Partial("News")
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/Service/Index.js"></script>
+    <script>
+
+        var s = new Service();
+        ko.applyBindings(s);
+        s.ShowServices();
+
+    </script>
+}
